@@ -78,7 +78,6 @@ module hd44780(
                       begin
                          lcd_data <= lcd_command;
                          state <= state + 1;
-                         lcd_command_seq <= lcd_command_seq + 1;
                       end
                  end // case: 8'h01
                8'h02: // Phase 2 -- Generate clock
@@ -102,6 +101,7 @@ module hd44780(
                          // GOTO Phase 1
                          state <= 8'h01;
                          count <= 0;
+                         lcd_command_seq <= lcd_command_seq + 1;
                       end
                     else
                       begin
